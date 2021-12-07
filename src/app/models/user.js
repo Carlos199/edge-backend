@@ -1,4 +1,4 @@
-const mongoose = require('../database')
+const mongoose = require('../../database')
 
 const bcrypt = require('bcryptjs')
 
@@ -24,7 +24,7 @@ const UserSchema = new mongoose.Schema({
   }
 })
 
-// encriptamos la contrasena
+// Encrypt the password
 UserSchema.pre('save', async function (next) {
   const hash = await bcrypt.hash(this.password, 10)
   this.password = hash
